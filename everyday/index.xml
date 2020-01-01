@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Everydays on 그농 하루</title>
+    <link>https://geunyoungno.github.io/everyday/</link>
+    <description>Recent content in Everydays on 그농 하루</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>kr-ko</language>
+    <managingEditor>geunyoungno&#43;blog@gmail.com (그농)</managingEditor>
+    <webMaster>geunyoungno&#43;blog@gmail.com (그농)</webMaster>
+    <lastBuildDate>Wed, 01 Jan 2020 18:14:02 +0900</lastBuildDate>
+    
+	<atom:link href="https://geunyoungno.github.io/everyday/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>첫글</title>
+      <link>https://geunyoungno.github.io/everyday/first/</link>
+      <pubDate>Wed, 01 Jan 2020 18:14:02 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/everyday/first/</guid>
+      <description>2020년 새해가 밝았다. 하지만 그동안 이룬것이 없어 보인다.
+작년에도 블로그를 만들었지만&amp;hellip; 작년에도 개발블로그를 시작해 본다고 의기양양하게 github pages 를 사용하여 만들어 보았었다. 개발 관련 내용과 일상에 대한 이야기를 기록할 목적으로 만들었었다. 하지만 처음에 생성만 하고 제대로 작성한 것이 없었다. 꾸준함이 없이 의욕도 없이 생성만 하고 방치해 두었고, 나조차도 찾지 않는 블로그가 되었다.
+2020년 나의 새로운 십년의 시작이다. 그동안은 손아귀로 웅켜잡고있는 모래알들 같이 나의 경험이 축적되지 못하고 스르륵 흘려 내려간 듯 하다 새로운 것을 계속 배우기도 해야지만, 알 았던 것들을 잊어 먹지 말자!</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 그농 하루</title>
+    <link>https://geunyoungno.github.io/tags/</link>
+    <description>Recent content in Tags on 그농 하루</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>kr-ko</language>
+    <managingEditor>geunyoungno&#43;blog@gmail.com (그농)</managingEditor>
+    <webMaster>geunyoungno&#43;blog@gmail.com (그농)</webMaster>
+    <lastBuildDate>Wed, 01 Jan 2020 18:14:02 +0900</lastBuildDate>
+    
+	<atom:link href="https://geunyoungno.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>everyday</title>
+      <link>https://geunyoungno.github.io/tags/everyday/</link>
+      <pubDate>Wed, 01 Jan 2020 18:14:02 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/tags/everyday/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
