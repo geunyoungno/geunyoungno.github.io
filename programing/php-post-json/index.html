@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Php, application/json 타입일시 POST data 가져오기  | 글</title>
+  <meta name="description" content=" 'Php, application/json 타입일시 POST data 가져오기'을 한 번 살펴보세요.">
+  <meta property="og:title" content="Php, application/json 타입일시 POST data 가져오기">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-01-02">
+  
+  <meta property="og:description" content=" 'Php, application/json 타입일시 POST data 가져오기'을 한 번 살펴보세요.">
+  <meta property="og:url" content="https://geunyoungno.github.io/programing/php-post-json/">
+  <meta property="og:site_name" content="글">
+  
+  <meta property="og:image" content="https://geunyoungno.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="programing">
+  
+  <meta property="og:tags" content="PHP">
+  
+  <meta property="og:tags" content="Laravel">
+  
+  <meta property="og:tags" content="Codeigniter">
+  
+  <meta property="og:tags" content="content-type">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://geunyoungno.github.io/programing/php-post-json/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    <div class="logo">
+      <a href="/">
+        <img src="/images/logo.png" height="34px" />
+      </a>
+    </div>
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> 메뉴
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#글</a></li>
+        <li><a href="/categories">#카테고리</a></li>
+        <li><a href="/tags">#태그</a></li>     
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="검색어" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://geunyoungno.github.io/programing/php-post-json/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>2020년 01월 02일 23시 21분</time>
+        <h1>Php, application/json 타입일시 POST data 가져오기</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">차례</span>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#api---post-data--">API 테스트 중 post data 가 안받아진다?!</a></li>
+    <li><a href="#-post-----">$_POST 에서 모든 원시데이터로 못가져 온다</a></li>
+    <li><a href="#laravel---">Laravel 에서는 어떻게 가져온것인가?</a></li>
+    <li><a href="#-">그래서 결론은!</a></li>
+    <li><a href="#test--">Test 를 해보았다.</a></li>
+  </ul>
+</nav>
+  </div>
+  <section class="post-content">
+    <h2 id="api---post-data--">API 테스트 중 post data 가 안받아진다?!</h2>
+<p>평소 회사에서 사용하던 PHP 프레임워크는 <a href="https:/laravel.com">Laravel</a> 이었다. Laravel 에서 <em>application/json</em>의 content-type으로 request 를 받을시, Laravel 의 Reqeust 클래스를 이용하면 post data를 잘 만 받아 왔었다.</p>
+<p>그런데 이번에 타팀 업무에 투입되어 <a href="https://codeigniter.com/">Codeigniter</a> 를 이용하여 Laravel 에서 했던 작업을 마이그레이션 해야 될 일이 있었다. 같은 PHP 기반 프레임워크 였기에 별다른 어려움 없이 API 를 개발하였고 연동하시는 분에게 확인을 부탁드렸다.</p>
+<p>연동하시는 분께서 확인 후 오류가 있다고 말씀해 주셨다. 그 오류는 data 를 제대로 받아오지 못하였을때 발생하도록 해놓은 오류 코드 였다.</p>
+<h2 id="-post-----">$_POST 에서 모든 원시데이터로 못가져 온다</h2>
+<p>문제와 관련된 내용을 검색해 보니 <a href="https://stackoverflow.com/questions/8893574/php-php-input-vs-post">HP &ldquo;php://input&rdquo; vs $_POST</a>이라는 스택오버플로우의 글을 보았다. 간략히 말하자면 다음과 같다.</p>
+<ul>
+<li><a href="https://www.php.net/manual/en/wrappers.php.php"><strong>php://input</strong></a>는 content-type과 무관하기 모든 raw data를 읽어온다다.</li>
+<li><a href="https://www.php.net/manual/en/reserved.variables.post.php"><strong>$_POST</strong></a>는 <em>application/x-www-form-urlencoded</em> 또는 <em>multipart/form-data</em> type의 데이터를 가져온다.</li>
+</ul>
+<p>Codeigniter를 통해 개발했던 API 에서는 <em>$_POST</em>, 정확히는 Input class의 post ($this-&gt;input-&gt;post(&lsquo;something&rsquo;)) 를 사용하여 POST data 를 가져오도록 하였는데, <em>application/json</em> 타입의 요청에 대해서 데이터를 못가져와서 data 를 가져올 수 없었던 것이었다.
+<em>php://input</em> 으로 data를 가져오도록 수정한 뒤 test 해보니 무리 없이 가져 올 수있었다.</p>
+<h2 id="laravel---">Laravel 에서는 어떻게 가져온것인가?</h2>
+<p>post data 를 가져오는 로직은 Laravel 에서도 있었다. 하지만 Laravel 에서는 문제 없이 <em>application/json</em> 타입의 data 를 가져올 수 있었다. 이에 대해 확인해보니 <em>application/json</em>을 처리하는 로직이 추가되어 있었다.</p>
+<p>Laravel 에서 request data 를 받기 위해서 laravel 의 Request class 를 사용하여 post 를 받아 왔다. 이 <a href="https://github.com/illuminate/http/blob/29bb546c415f4da5046f51f73cf952c93661171f/Request.php#L351-L362">Request class</a>에서 <em>application/json</em> 타입에 대해서 처리해줘서 가져오는데 문제를 느끼지 못하였다.</p>
+<h2 id="-">그래서 결론은!</h2>
+<p>프레임워크가 많은 지원을 해주고 이를 사용하는데데 너무나 익숙해져져서 PHP 본연의 처리에 대해서 무지한 부분이 있었다. 이번 기회를 통해 request data 에 대한 처리에 대해 좀 더 찾아 볼 수 있는 기회가 되었다.</p>
+<h2 id="test--">Test 를 해보았다.</h2>
+<ol>
+<li>php code 는 다음과 같다.</li>
+</ol>
+<script src="https://gist.github.com/geunyoungno/52b3fda98d3382ceb21476472171a06b.js"></script>
+<ol start="2">
+<li>local 에서 server 를 띄운뒤 curl 로 요청을 진행하였다.</li>
+</ol>
+<script src="https://gist.github.com/geunyoungno/e635740391bdc475b349b9240b10eecb.js"></script>
+<ol start="3">
+<li>응답은 다음과 같다. <em>application/json</em> 타입 일 때 post data 를 못 받아 오는 것을 볼 수 있다.</li>
+</ol>
+<script src="https://gist.github.com/geunyoungno/1cfceca47b16638c866d2c993b869f4a.js"></script>
+
+  </section>
+  <div class="share">    
+    <a
+      href="//www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2fgeunyoungno.github.io%2fprograming%2fphp-post-json%2f&t=Php%2c%20application%2fjson%20%ed%83%80%ec%9e%85%ec%9d%bc%ec%8b%9c%20POST%20data%20%ea%b0%80%ec%a0%b8%ec%98%a4%ea%b8%b0"
+      onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+      ><i class="fa fa-facebook"></i
+    ></a>
+    <a
+      href="//twitter.com/intent/tweet?url=https%3a%2f%2fgeunyoungno.github.io%2fprograming%2fphp-post-json%2f&text=Php%2c%20application%2fjson%20%ed%83%80%ec%9e%85%ec%9d%bc%ec%8b%9c%20POST%20data%20%ea%b0%80%ec%a0%b8%ec%98%a4%ea%b8%b0&tw_p=tweetbutton"
+      onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+      ><i class="fa fa-twitter"></i
+    ></a>
+    <a
+      href="//getpocket.com/edit?url=https%3a%2f%2fgeunyoungno.github.io%2fprograming%2fphp-post-json%2f&title=Php%2c%20application%2fjson%20%ed%83%80%ec%9e%85%ec%9d%bc%ec%8b%9c%20POST%20data%20%ea%b0%80%ec%a0%b8%ec%98%a4%ea%b8%b0"
+      onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+      ><i class="fa fa-get-pocket"></i
+    ></a>
+    <a
+      href="//plus.google.com/share?url=https%3a%2f%2fgeunyoungno.github.io%2fprograming%2fphp-post-json%2f"
+      onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"
+      ><i class="fa fa-google-plus"></i
+    ></a>
+  </div>
+  <div class="post-meta-code">
+    <div class="desc">
+      친절한
+      
+      <a href="mailto:geunyoungno&#43;blog@gmail.com">그농</a>
+      
+      님이
+      <span class="highlight">2020년 01월 02일 23시 21분</span> 
+      에 작성한 글입니다.
+    </div>
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_카테고리</span>
+        
+        
+        <a href="https://geunyoungno.github.io//categories/programing">#programing</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_태그</span>
+        
+        
+        <a href="https://geunyoungno.github.io/tags/programing">#programing</a>
+        
+        <a href="https://geunyoungno.github.io/tags/php">#PHP</a>
+        
+        <a href="https://geunyoungno.github.io/tags/laravel">#Laravel</a>
+        
+        <a href="https://geunyoungno.github.io/tags/codeigniter">#Codeigniter</a>
+        
+        <a href="https://geunyoungno.github.io/tags/content-type">#content-type</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    다음으로 읽을만한 글입니다.
+    <ul>
+      
+      <li>
+        <a href="https://geunyoungno.github.io/everyday/first/" rel="prev">
+          <span>첫글</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>위로</span>
+  </a>
+</div>
+<footer class="footer">
+  COPYRIGHT (C) <a href="https://blog.lulab.net">DONGGEUN,BANG (LUBANG).</a><br />
+  ALL RIGHTS RESERVED.
+</footer>
+</body>
+</html>
+

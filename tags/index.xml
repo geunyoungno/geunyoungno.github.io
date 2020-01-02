@@ -8,10 +8,55 @@
     <language>kr-ko</language>
     <managingEditor>geunyoungno&#43;blog@gmail.com (그농)</managingEditor>
     <webMaster>geunyoungno&#43;blog@gmail.com (그농)</webMaster>
-    <lastBuildDate>Wed, 01 Jan 2020 18:14:02 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 23:21:57 +0900</lastBuildDate>
     
 	<atom:link href="https://geunyoungno.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Codeigniter</title>
+      <link>https://geunyoungno.github.io/tags/codeigniter/</link>
+      <pubDate>Thu, 02 Jan 2020 23:21:57 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/tags/codeigniter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>content-type</title>
+      <link>https://geunyoungno.github.io/tags/content-type/</link>
+      <pubDate>Thu, 02 Jan 2020 23:21:57 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/tags/content-type/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Laravel</title>
+      <link>https://geunyoungno.github.io/tags/laravel/</link>
+      <pubDate>Thu, 02 Jan 2020 23:21:57 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>https://geunyoungno.github.io/tags/php/</link>
+      <pubDate>Thu, 02 Jan 2020 23:21:57 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programing</title>
+      <link>https://geunyoungno.github.io/tags/programing/</link>
+      <pubDate>Thu, 02 Jan 2020 23:21:57 +0900</pubDate>
+      <author>geunyoungno&#43;blog@gmail.com (그농)</author>
+      <guid>https://geunyoungno.github.io/tags/programing/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>everyday</title>
